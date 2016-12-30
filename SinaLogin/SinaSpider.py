@@ -159,10 +159,11 @@ class SinaClient(object):
 def testLogin():
     client = SinaClient()
     username = raw_input("Please input username: ")
-    password = getpass.getpass("Please input your password: ")   
+    password = raw_input("Please input your password: ")   
     session = client.login(username, password)
-    
-    follow = session.post("http://weibo.cn/1669282904/follow").text.encode("utf-8")
+    #获取方式改为get
+    #follow = session.post("http://weibo.cn/1669282904/follow").text.encode("utf-8")
+    follow = session.get("http://weibo.cn/1669282904/follow").text.encode("utf-8")
     client.output(follow, "out/follow.html")
 
 
